@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theater Store Viewer</title>
+    <link rel="stylesheet" href="/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/monokai.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/markdown/markdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/rust/rust.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <h1>Store Labels</h1>
+                <button id="new-label-btn" class="btn-primary">+ New</button>
+            </header>
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search labels..." autocomplete="off">
+            </div>
+            <div id="label-list" class="label-list">
+                <div class="loading-message">Loading labels...</div>
+            </div>
+        </aside>
+
+        <main class="editor-container">
+            <div id="empty-state" class="empty-state">
+                <h2>No label selected</h2>
+                <p>Select a label from the sidebar or create a new one to get started</p>
+            </div>
+
+            <div id="editor-view" class="editor-view hidden">
+                <div class="editor-toolbar">
+                    <input type="text" id="label-name" class="label-name-input" readonly>
+                    <div class="toolbar-actions">
+                        <button id="save-btn" class="btn" disabled>Save</button>
+                        <span id="save-status" class="save-status"></span>
+                    </div>
+                </div>
+                <div id="editor-wrapper">
+                    <textarea id="editor"></textarea>
+                </div>
+                <div id="binary-view" class="binary-view hidden">
+                    <div class="binary-content">
+                        <h3>Binary Content</h3>
+                        <p>This label contains binary data and cannot be edited in the text editor.</p>
+                        <div id="binary-info" class="binary-info"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>

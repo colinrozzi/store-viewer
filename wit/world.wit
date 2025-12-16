@@ -2,5 +2,9 @@ package component:store-viewer;
 
 world default {
     import theater:simple/runtime;
+    import theater:simple/http-framework;
+    import theater:simple/store;
+
     export theater:simple/actor;
+    export theater:simple/http-handlers;
 }
