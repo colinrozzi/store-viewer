@@ -1,0 +1,6 @@
+package component:store-viewer;
+
+world default {
+    import theater:simple/runtime;
+    export theater:simple/actor;
+}
