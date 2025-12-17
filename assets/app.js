@@ -24,7 +24,7 @@ class StoreViewer {
         this.editor = CodeMirror.fromTextArea(textarea, {
             mode: 'javascript',
             theme: 'monokai',
-            lineNumbers: true,
+            lineNumbers: false,
             lineWrapping: true,
             tabSize: 2,
             indentUnit: 2,
@@ -69,6 +69,15 @@ class StoreViewer {
             this.filterLabels(e.target.value);
         });
 
+        // Sidebar toggle buttons
+        const toggleSidebar = () => {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('collapsed');
+        };
+
+        document.getElementById('sidebar-toggle').addEventListener('click', toggleSidebar);
+        document.getElementById('sidebar-toggle-editor').addEventListener('click', toggleSidebar);
+
         // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
             // Ctrl+S or Cmd+S to save
@@ -77,6 +86,12 @@ class StoreViewer {
                 if (this.currentLabel && this.isDirty) {
                     this.saveLabel();
                 }
+            }
+            // Ctrl+B or Cmd+B to toggle sidebar
+            if ((e.ctrlKey || e.metaKey) && e.key === 'b') {
+                e.preventDefault();
+                const sidebar = document.querySelector('.sidebar');
+                sidebar.classList.toggle('collapsed');
             }
         });
     }

@@ -47,6 +47,11 @@ struct LabelContentResponse {
 // ============================================================================
 
 fn is_text_content(bytes: &[u8]) -> bool {
+    // Empty content is text
+    if bytes.is_empty() {
+        return true;
+    }
+
     // Try to decode as UTF-8
     if let Ok(s) = std::str::from_utf8(bytes) {
         // Count control characters (excluding common ones like newline, tab)
