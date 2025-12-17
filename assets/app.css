@@ -399,8 +399,14 @@ body {
     }
 
     /* Editor takes full width on mobile */
+    .app-container {
+        flex-direction: column;
+    }
+
     .editor-container {
         width: 100%;
+        flex: 1;
+        position: relative;
     }
 
     /* Larger touch targets */
