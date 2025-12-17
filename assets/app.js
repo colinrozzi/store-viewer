@@ -44,6 +44,12 @@ class StoreViewer {
         // Setup event listeners
         this.setupEventListeners();
 
+        // Collapse sidebar on mobile by default
+        if (this.isMobile()) {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.add('collapsed');
+        }
+
         // Load labels from the API
         await this.loadLabels();
 
@@ -244,6 +250,12 @@ class StoreViewer {
             this.updateSaveButton();
             this.renderLabelList(document.getElementById('search-input').value);
 
+            // Auto-collapse sidebar on mobile after selecting a label
+            if (this.isMobile()) {
+                const sidebar = document.querySelector('.sidebar');
+                sidebar.classList.add('collapsed');
+            }
+
         } catch (error) {
             console.error('Failed to load label:', error);
             this.showError(`Failed to load label: ${name}`);
@@ -436,6 +448,14 @@ class StoreViewer {
         const div = document.createElement('div');
         div.textContent = text;
         return div.innerHTML;
+    }
+
+    /**
+     * Detect if the user is on a mobile device
+     */
+    isMobile() {
+        return window.innerWidth <= 768 ||
+               /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     }
 }
 

@@ -382,16 +382,83 @@ body {
    ============================================================================ */
 
 @media (max-width: 768px) {
+    /* Make sidebar overlay instead of side-by-side */
     .sidebar {
-        width: 220px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 280px;
+        z-index: 1000;
+        margin-left: 0;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .sidebar.collapsed {
+        margin-left: -280px;
+    }
+
+    /* Editor takes full width on mobile */
+    .editor-container {
+        width: 100%;
+    }
+
+    /* Larger touch targets */
+    .btn, .btn-primary {
+        font-size: 11px;
+        padding: 8px 14px;
+        min-height: 44px;
+    }
+
+    .sidebar-toggle {
+        font-size: 14px;
+        padding: 8px 12px;
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    .label-item {
+        padding: 12px;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+    }
+
+    .search-box input {
+        padding: 8px 12px;
+        font-size: 12px;
+        min-height: 44px;
+    }
+
+    .label-name-input {
+        padding: 8px 12px;
+        font-size: 12px;
+        min-height: 44px;
+    }
+
+    .sidebar-header {
+        padding: 12px;
+        min-height: 56px;
     }
 
     .sidebar-header h1 {
-        font-size: 9px;
+        font-size: 11px;
     }
 
-    .btn, .btn-primary {
-        font-size: 9px;
-        padding: 3px 8px;
+    /* Adjust editor toolbar spacing */
+    .editor-toolbar {
+        padding: 8px 12px;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .toolbar-actions {
+        gap: 12px;
+    }
+
+    /* Make CodeMirror more touch-friendly */
+    .CodeMirror {
+        font-size: 13px;
+        line-height: 1.6;
     }
 }
